@@ -1,3 +1,5 @@
+ config/ssh.lua
+
 # Compiled Lua sources
 luac.out
 

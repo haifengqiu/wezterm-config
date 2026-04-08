@@ -22,7 +22,7 @@ return function(wezterm, config)
       -- connect_automatically = true,
 
       -- Specify an alternative read timeout
-      -- timeout = 60,
+      timeout = 60,
 
       -- The path to the wezterm binary on the remote host.
       -- Primarily useful if it isn't installed in the $PATH
