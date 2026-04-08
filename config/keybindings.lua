@@ -11,10 +11,10 @@ return function(wezterm, config)
     -- ========== 窗口管理 ==========
     { key = 'F11',      mods = 'NONE',  action = wezterm.action.ToggleFullScreen },
     -- ========== 标签页管理 ==========
-    { key = 't',          mods = 'ALT',   action = wezterm.action.SpawnTab("CurrentPaneDomain") },
-    { key = 'u',          mods = 'ALT',   action = wezterm.action.SpawnTab{DomainName = 'WSL:Ubuntu-22.04'} },
-    { key = 'm',          mods = 'ALT',   action = wezterm.action.ShowTabNavigator },
-    { key = 'w',          mods = 'ALT',   action = wezterm.action.CloseCurrentPane { confirm = false } },
+    { key = 't',          mods = 'CTRL',   action = wezterm.action.SpawnTab("CurrentPaneDomain") },
+    { key = 'u',          mods = 'CTRL',   action = wezterm.action.SpawnTab{DomainName = 'WSL:Ubuntu-22.04'} },
+    { key = 'm',          mods = 'CTRL',   action = wezterm.action.ShowTabNavigator },
+    { key = 'w',          mods = 'CTRL',   action = wezterm.action.CloseCurrentPane { confirm = false } },
     { key = 'Tab',          mods = 'CTRL',   action = wezterm.action.ActivateTabRelative(1) },
     { key = 'Tab',          mods = 'CTRL|SHIFT',   action = wezterm.action.ActivateTabRelative(-1) },
     -- ========== 窗格分割 ==========
@@ -40,4 +40,19 @@ return function(wezterm, config)
     { key = 'UpArrow', mods = 'SHIFT', action = wezterm.action.ScrollByLine(-1) },
     { key = 'DownArrow', mods = 'SHIFT', action = wezterm.action.ScrollByLine(1) },
   }
+   -- ========== 标签页直接选择 ==========
+  for i = 1, 8 do
+    -- CTRL + number to activate that tab
+    table.insert(config.keys, {
+      key = tostring(i),
+      mods = 'CTRL',
+      action = wezterm.action.ActivateTab(i - 1),
+    })
+    -- CTRL+SHIFT+ number to activate that tab from right-side
+    table.insert(config.keys, {
+      key = tostring(i),
+      mods = 'CTRL|SHIFT',
+      action = wezterm.action.ActivateTab(- i),
+    })
+  end  
 end
