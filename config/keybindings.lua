@@ -1,5 +1,7 @@
 return function(wezterm, config)
   -- ========== 优先容易记 其次贴近浏览器行为 再次优先选用较近的ALT. 不常用的用ALT+Enter选择提示==========
+  -- 强制 kitty 键盘协议：wezterm 默认 legacy，保证 Shift+Enter 等修饰键被 omp 等 TUI 正确识别
+  config.enable_kitty_keyboard = true
   config.keys = {
     {
         key = "Enter",
@@ -11,7 +13,7 @@ return function(wezterm, config)
     -- ========== 窗口管理 ==========
     { key = 'F11',      mods = 'NONE',  action = wezterm.action.ToggleFullScreen },
     -- ========== 标签页管理 ==========
-    { key = 't',          mods = 'CTRL',   action = wezterm.action.SpawnTab("CurrentPaneDomain") },
+    { key = 't',          mods = 'ALT',    action = wezterm.action.SpawnTab("CurrentPaneDomain") },
     { key = 'u',          mods = 'CTRL',   action = wezterm.action.SpawnTab{DomainName = 'WSL:Ubuntu-22.04'} },
     { key = 'm',          mods = 'CTRL',   action = wezterm.action.ShowTabNavigator },
     { key = 'w',          mods = 'CTRL',   action = wezterm.action.CloseCurrentPane { confirm = false } },
