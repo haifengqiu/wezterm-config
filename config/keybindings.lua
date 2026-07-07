@@ -1,7 +1,7 @@
 return function(wezterm, config)
   -- ========== 优先容易记 其次贴近浏览器行为 再次优先选用较近的ALT. 不常用的用ALT+Enter选择提示==========
   -- 强制 kitty 键盘协议：wezterm 默认 legacy，保证 Shift+Enter 等修饰键被 omp 等 TUI 正确识别
-  config.enable_kitty_keyboard = true
+  -- config.enable_kitty_keyboard = true
   config.keys = {
     {
         key = "Enter",
